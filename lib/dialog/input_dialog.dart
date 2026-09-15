@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_dialog/util/input_formatter/number_text_input_formatter.dart';
 import 'package:flutter_dialog/util/theme_utils.dart';
-import 'package:flutter_dialog/util/toast_utils.dart';
+// import 'package:flutter_dialog/util/toast_utils.dart';
 import 'package:flutter_dialog/widgets/base_dialog.dart';
 
 
@@ -64,7 +64,7 @@ class _InputDialog extends State<InputDialog> {
       ),
       onPressed: () {
         if (_controller.text.isEmpty) {
-          Toast.show('请输入${widget.title}');         
+          //Toast.show('请输入${widget.title}');
           return;
         }
         widget.onPressed(_controller.text);
