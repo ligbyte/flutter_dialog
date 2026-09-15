@@ -111,7 +111,7 @@ class _MyHomePageState extends State<MyHomePage> {
           children: [
             OutlinedButton(
               onPressed: _showAlertDialog,
-              child: const Text('exit dialog'),
+              child: const Text('alert dialog'),
             ),
             SizedBox(height: 20,),
             OutlinedButton(
@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _showAlertDialog() {
     showDialog<void>(
         context: context,
-        builder: (_) => const AlertDialog()
+        builder: (_) => const AlertDialog(title: "提示",content: "您确定要退出登录吗？",)
     );
   }
 

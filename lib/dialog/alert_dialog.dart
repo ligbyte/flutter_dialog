@@ -4,8 +4,15 @@ import 'package:flutter_dialog/widgets/base_dialog.dart';
 
 class AlertDialog extends StatefulWidget {
 
+  final String? title;
+  final String? content;
+  final void Function(String) onPressed;
+
   const AlertDialog({
     super.key,
+    this.title,
+    this.content = "内容",
+    required this.onPressed,
   });
 
   @override
@@ -18,10 +25,10 @@ class _AlertDialog extends State<AlertDialog> {
   @override
   Widget build(BuildContext context) {
     return BaseDialog(
-      title: '提示',
-      child: const Padding(
+      title: widget.title,
+      child: Padding(
         padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16.0),
-        child: Text('您确定要退出登录吗？', style: TextStyles.textSize16),
+        child: Text(widget.content!, style: TextStyles.textSize16),
       ),
       onPressed: () {
 
