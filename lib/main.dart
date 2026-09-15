@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter/material.dart' hide AlertDialog;
 
-import 'dialog/exit_dialog.dart';
-import 'dialog/goods_size_dialog.dart';
-import 'dialog/pay_type_dialog.dart';
-import 'dialog/price_input_dialog.dart';
+import 'dialog/alert_dialog.dart';
+import 'dialog/single_choice_dialog.dart';
+import 'dialog/input_dialog.dart';
 import 'dialog/progress_dialog.dart';
 
 void main() {
@@ -111,20 +110,20 @@ class _MyHomePageState extends State<MyHomePage> {
           mainAxisAlignment: .center,
           children: [
             OutlinedButton(
-              onPressed: _showExitDialog,
+              onPressed: _showAlertDialog,
               child: const Text('exit dialog'),
             ),
             SizedBox(height: 20,),
             OutlinedButton(
               onPressed: (){
-                _showPayTypeDialog(context);
+                _showSingleChoiceeDialog(context);
               },
-              child: const Text('pay type dialog'),
+              child: const Text('single choice dialog'),
             ),
             SizedBox(height: 20,),
             OutlinedButton(
               onPressed: () {
-                _showFreightInputDialog(0);
+                _showInputDialog(0);
               },
               child: const Text('price  input dialog'),
             ),
@@ -150,20 +149,20 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-  void _showExitDialog() {
+  void _showAlertDialog() {
     showDialog<void>(
         context: context,
-        builder: (_) => const ExitDialog()
+        builder: (_) => const AlertDialog()
     );
   }
 
 
-  void _showPayTypeDialog(BuildContext context) {
+  void _showSingleChoiceeDialog(BuildContext context) {
     showDialog<void>(
       context: context,
       barrierDismissible: false,
       builder: (BuildContext context) {
-        return PayTypeDialog(
+        return SingleChoiceeDialog(
           onPressed: (index, type) {
             // Toast.show('收款类型：$type');
           },
@@ -172,13 +171,13 @@ class _MyHomePageState extends State<MyHomePage> {
     );
   }
 
-  void _showFreightInputDialog(int index) {
+  void _showInputDialog(int index) {
     showDialog<void>(
         context: context,
         barrierDismissible: false,
         builder: (BuildContext context) {
-          return PriceInputDialog(
-            title: '运费比率',
+          return InputDialog(
+            title: '温度',
             inputMaxPrice: 100,
             onPressed: (value) {
 

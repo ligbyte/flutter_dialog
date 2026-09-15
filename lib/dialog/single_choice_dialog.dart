@@ -6,9 +6,9 @@ import '../res/gaps.dart';
 import '../widgets/load_image.dart';
 
 /// design/3订单/index.html#artboard5
-class PayTypeDialog extends StatefulWidget {
+class SingleChoiceeDialog extends StatefulWidget {
 
-  const PayTypeDialog({
+  const SingleChoiceeDialog({
     super.key,
     this.onPressed,
   });
@@ -16,14 +16,14 @@ class PayTypeDialog extends StatefulWidget {
   final void Function(int, String)? onPressed;
   
   @override
-  _PayTypeDialog createState() => _PayTypeDialog();
+  _SingleChoiceeDialog createState() => _SingleChoiceeDialog();
   
 }
 
-class _PayTypeDialog extends State<PayTypeDialog> {
+class _SingleChoiceeDialog extends State<SingleChoiceeDialog> {
 
   int _value = 0;
-  final _list = ['未收款', '支付宝', '微信', '现金'];
+  final _list = ['模板1', '模板2', '模板3', '模板4'];
 
   Widget _buildItem(int index) {
     return Material(
@@ -64,7 +64,7 @@ class _PayTypeDialog extends State<PayTypeDialog> {
   @override
   Widget build(BuildContext context) {
     return BaseDialog(
-      title: '收款方式',
+      title: '模板选择',
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         mainAxisSize: MainAxisSize.min,

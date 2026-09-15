@@ -34,7 +34,7 @@ class Gaps {
 //    child: const DecoratedBox(decoration: BoxDecoration(color: Colours.line)),
 //  );
 
-  static const Widget line = Divider();
+  static const Widget line = Divider(height: 3,);
 
   static const Widget vLine = SizedBox(
     width: 0.6,

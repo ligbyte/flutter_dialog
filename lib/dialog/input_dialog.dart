@@ -5,10 +5,9 @@ import 'package:flutter_dialog/util/toast_utils.dart';
 import 'package:flutter_dialog/widgets/base_dialog.dart';
 
 
-/// design/7店铺-店铺配置/index.html#artboard3
-class PriceInputDialog extends StatefulWidget {
+class InputDialog extends StatefulWidget {
 
-  const PriceInputDialog({
+  const InputDialog({
     super.key,
     this.title,
     this.inputMaxPrice = 100000,
@@ -20,11 +19,11 @@ class PriceInputDialog extends StatefulWidget {
   final void Function(String) onPressed;
   
   @override
-  _PriceInputDialog createState() => _PriceInputDialog();
+  _InputDialog createState() => _InputDialog();
   
 }
 
-class _PriceInputDialog extends State<PriceInputDialog> {
+class _InputDialog extends State<InputDialog> {
 
   final TextEditingController _controller = TextEditingController();
 
@@ -58,7 +57,7 @@ class _PriceInputDialog extends State<PriceInputDialog> {
             isDense: true,
             contentPadding: const EdgeInsets.symmetric(horizontal: 16.0),
             border: InputBorder.none,
-            hintText: '输入${widget.title}',
+            hintText: '请输入${widget.title}',
             //hintStyle: TextStyles.textGrayC14,
           ),
         ),

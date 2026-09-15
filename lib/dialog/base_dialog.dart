@@ -45,7 +45,7 @@ class BaseDialog extends StatelessWidget {
           },
         ),
         const SizedBox(
-          height: 48.0,
+          height: 60.0,
           width: 0.6,
           child: VerticalDivider(),
         ),
@@ -65,7 +65,7 @@ class BaseDialog extends StatelessWidget {
           Gaps.vGap24,
           dialogTitle,
           Flexible(child: child),
-          Gaps.vGap8,
+          Gaps.vGap16,
           Gaps.line,
           bottomButton,
         ],
