@@ -1,5 +1,11 @@
 import 'package:flutter/material.dart';
 
+import 'dialog/exit_dialog.dart';
+import 'dialog/goods_size_dialog.dart';
+import 'dialog/pay_type_dialog.dart';
+import 'dialog/price_input_dialog.dart';
+import 'dialog/progress_dialog.dart';
+
 void main() {
   runApp(const MyApp());
 }
@@ -104,11 +110,33 @@ class _MyHomePageState extends State<MyHomePage> {
           // wireframe for each widget.
           mainAxisAlignment: .center,
           children: [
-            const Text('You have pushed the button this many times:'),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headlineMedium,
+            OutlinedButton(
+              onPressed: _showExitDialog,
+              child: const Text('exit dialog'),
             ),
+            SizedBox(height: 20,),
+            OutlinedButton(
+              onPressed: (){
+                _showPayTypeDialog(context);
+              },
+              child: const Text('pay type dialog'),
+            ),
+            SizedBox(height: 20,),
+            OutlinedButton(
+              onPressed: () {
+                _showFreightInputDialog(0);
+              },
+              child: const Text('price  input dialog'),
+            ),
+            SizedBox(height: 20,),
+            OutlinedButton(
+              onPressed: () {
+                showProgress();
+              },
+              child: const Text('progress dialog'),
+            ),
+
+
           ],
         ),
       ),
@@ -119,4 +147,74 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+
+
+
+  void _showExitDialog() {
+    showDialog<void>(
+        context: context,
+        builder: (_) => const ExitDialog()
+    );
+  }
+
+
+  void _showPayTypeDialog(BuildContext context) {
+    showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return PayTypeDialog(
+          onPressed: (index, type) {
+            // Toast.show('收款类型：$type');
+          },
+        );
+      },
+    );
+  }
+
+  void _showFreightInputDialog(int index) {
+    showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return PriceInputDialog(
+            title: '运费比率',
+            inputMaxPrice: 100,
+            onPressed: (value) {
+
+            },
+          );
+        }
+    );
+  }
+
+
+  /// 可自定义Progress
+  Widget buildProgress() => const ProgressDialog(hintText: '正在加载...');
+  void showProgress() {
+    /// 避免重复弹出
+      try {
+        showDialog<void>(
+          context: context,
+          barrierDismissible: false,
+          barrierColor: const Color(0x00FFFFFF), // 默认dialog背景色为半透明黑色，这里修改为透明（1.20添加属性）
+          builder:(_) {
+            return WillPopScope(
+              onWillPop: () async {
+                // 拦截到返回键，证明dialog被手动关闭
+                return Future.value(true);
+              },
+              child: buildProgress(),
+            );
+          },
+        );
+      } catch(e) {
+        /// 异常原因主要是页面没有build完成就调用Progress。
+        debugPrint(e.toString());
+      }
+  }
+
+
+
+
 }
