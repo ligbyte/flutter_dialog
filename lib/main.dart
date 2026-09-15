@@ -152,7 +152,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void _showAlertDialog() {
     showDialog<void>(
         context: context,
-        builder: (_) => const AlertDialog(title: "提示",content: "您确定要退出登录吗？",)
+        builder: (_) =>  AlertDialog(title: "提示",content: "您确定要退出登录吗？", onPressed: (String){},)
     );
   }
 
